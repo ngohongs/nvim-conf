@@ -62,6 +62,27 @@ return { -- Fuzzy Finder (files, lsp, etc)
         },
       }
 
+        if vim.fn.executable("rg") ~= 1 then
+            local os_name = vim.loop.os_uname().sysname
+            if string.find(os_name, "Windows") then
+                local exitcode = os.execute("winget install BurntSushi.ripgrep.MSVC")
+                if exitcode == 0 then
+                    print("Please restart shell")
+                else
+                    print("Unable to install ripgrep for Telescope plugin")
+                end
+            elseif string.find(os_name, "Linux") then
+                -- Debian based OS support
+                local exitcode = os.execute("sudo apt-get install ripgrep -y")
+                if exitcode == 0 then
+                    print("Please restart shell")
+                else
+                    print("Unable to install ripgrep for Telescope plugin (run sudo nvim)")
+                end
+            else
+            end
+        end
+
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
