@@ -77,7 +77,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
                 if exitcode == 0 then
                     print("Please restart shell")
                 else
-                    print("Unable to install ripgrep for Telescope plugin (run sudo nvim)")
+                    print("Unable to install ripgrep for Telescope plugin. (Run nvim in sudo -E -s for the initial setup)")
                 end
             else
             end
