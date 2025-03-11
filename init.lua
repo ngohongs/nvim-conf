@@ -1,5 +1,11 @@
+-- OS dependant
+local os_name = vim.loop.os_uname().sysname
+if string.find(os_name, "Windows") then
 -- Set default language
-vim.cmd("language en_US")
+    vim.cmd("language en_US")
+elseif string.find(os_name, "Linux") then
+else
+end
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
