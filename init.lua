@@ -153,6 +153,7 @@ require("lazy").setup({
         require "plugins.gitsigns",
         require "plugins.telescope",
         require "plugins.treesitter",
+        require "plugins.neo-tree",
     },
     checker = { enabled = true },
 })
