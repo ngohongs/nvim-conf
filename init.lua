@@ -150,6 +150,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
     spec = {
+        require "colorscheme",
         require "plugins.gitsigns",
         require "plugins.telescope",
         require "plugins.treesitter",
