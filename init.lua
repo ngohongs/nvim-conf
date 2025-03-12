@@ -152,6 +152,7 @@ require("lazy").setup({
     spec = {
         require "plugins.gitsigns",
         require "plugins.telescope",
+        require "plugins.treesitter",
     },
     checker = { enabled = true },
 })
