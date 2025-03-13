@@ -1,11 +1,11 @@
 return {
-    languages = {
-                "vimdoc",
-                "c",
-                "cpp",
-                "make",
-                "cmake",
-                "rust",
-                "lua",
-            },
+  languages = {
+    "vimdoc",
+    "c",
+    "cpp",
+    "make",
+    "cmake",
+    "rust",
+    "lua",
+  },
 }
