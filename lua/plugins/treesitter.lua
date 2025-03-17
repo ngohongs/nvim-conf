@@ -21,7 +21,7 @@ return { -- Highlight, edit, and navigate code
         end
 
         require("nvim-treesitter.configs").setup({
-            ensure_installed = require("languages").languages,
+            ensure_installed = vim.tbl_keys(require("languages").language_servers),
             -- Autoinstall languages that are not installed
             auto_install = true,
             highlight = {
