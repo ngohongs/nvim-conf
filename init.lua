@@ -155,7 +155,7 @@ require("lazy").setup({
     require "plugins.telescope",
     require "plugins.treesitter",
     require "plugins.neo-tree",
-    --        require "plugins.lsp-config",
+    require "plugins.lsp-config",
   },
   checker = { enabled = true },
 })
