@@ -2,9 +2,9 @@ return {
   "folke/tokyonight.nvim",
   lazy = false,
   priority = 1000,
-  config = function() 
+  config = function()
     require("tokyonight").setup({})
 
-    vim.cmd[[colorscheme tokyonight]]
+    vim.cmd [[colorscheme tokyonight]]
   end,
 }

@@ -156,6 +156,17 @@ return { -- LSP Configuration & Plugins
         },
       }
 
+      -- Formatting a buffer
+      function FormatPreserveCursor()
+        local pos = vim.api.nvim_win_get_cursor(0) -- save cursor position
+        vim.lsp.buf.format({ async = false })      -- format using LSP
+        vim.api.nvim_win_set_cursor(0, pos)        -- restore cursor
+      end
+
+      vim.api.nvim_create_user_command("FormatKeepCursor", FormatPreserveCursor, {})
+      vim.keymap.set('n', '<leader>ff', FormatPreserveCursor, { desc = 'Format current buffer' })
+      
+
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
       --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.

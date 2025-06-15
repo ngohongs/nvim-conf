@@ -20,4 +20,3 @@ return {
     vim.keymap.set('n', '<leader>fs', '<Cmd>Neotree toggle<CR>')
   end,
 }
-
