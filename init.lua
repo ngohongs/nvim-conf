@@ -156,6 +156,7 @@ require("lazy").setup({
     require "plugins.treesitter",
     require "plugins.neo-tree",
     require "plugins.lsp-config",
+    require "plugins.which-key",
   },
   checker = { enabled = true },
 })
