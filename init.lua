@@ -1,8 +1,8 @@
 -- OS dependant
 local os_name = vim.loop.os_uname().sysname
 if string.find(os_name, "Windows") then
-  -- Set default language
-  vim.cmd("language en_US")
+    -- Set default language
+    vim.cmd("language en_US")
 elseif string.find(os_name, "Linux") then
 else
 end
@@ -38,7 +38,7 @@ vim.opt.showmode = false
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
+    vim.opt.clipboard = 'unnamedplus'
 end)
 
 -- Enable break indent
@@ -72,9 +72,9 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Replace tabs with 4 spaces
 vim.opt.expandtab = true
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -123,41 +123,41 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+    desc = 'Highlight when yanking (copying) text',
+    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
 })
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
-      { "\nPress any key to exit..." },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
+    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+    local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+    if vim.v.shell_error ~= 0 then
+        vim.api.nvim_echo({
+            { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+            { out,                            "WarningMsg" },
+            { "\nPress any key to exit..." },
+        }, true, {})
+        vim.fn.getchar()
+        os.exit(1)
+    end
 end
 vim.opt.rtp:prepend(lazypath)
 
 -- Setup lazy.nvim
 require("lazy").setup({
-  spec = {
-    require "colorscheme",
-    require "plugins.which-key",
-    require "plugins.gitsigns",
-    require "plugins.telescope",
-    require "plugins.treesitter",
-    require "plugins.neo-tree",
-    require "plugins.lsp-config",
-    require "plugins.diffview",
-  },
-  checker = { enabled = true },
+    spec = {
+        require "colorscheme",
+        require "plugins.which-key",
+        require "plugins.gitsigns",
+        require "plugins.telescope",
+        require "plugins.treesitter",
+        require "plugins.neo-tree",
+        require "plugins.lsp-config",
+        require "plugins.diffview",
+    },
+    checker = { enabled = true },
 })

@@ -1,7 +1,7 @@
 return {
-  language_servers = {
-    lua = "lua_ls",
-    rust = "rust_analyzer",
-    cpp = "clangd",
-  },
+    language_servers = {
+        lua = "lua_ls",
+        rust = "rust_analyzer",
+        cpp = "clangd",
+    },
 }
