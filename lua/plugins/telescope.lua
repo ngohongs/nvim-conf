@@ -17,6 +17,15 @@ return { -- Fuzzy Finder (files, lsp, etc)
         return vim.fn.executable 'make' == 1
       end,
     },
+    {
+      'nvim-telescope/telescope-fzf-native.nvim',
+
+      build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install',
+
+      cond = function()
+        return vim.fn.executable 'make' ~= 1
+      end,
+    },
     { 'nvim-telescope/telescope-ui-select.nvim' },
 
     -- Useful for getting pretty icons, but requires a Nerd Font.
@@ -82,7 +91,26 @@ return { -- Fuzzy Finder (files, lsp, etc)
       else
       end
     end
-
+    if vim.fn.executable("fd") ~= 1 then
+      local os_name = vim.loop.os_uname().sysname
+      if string.find(os_name, "Windows") then
+        local exitcode = os.execute("winget install -i sharkdp.fd") 
+        if exitcode == 0 then
+          print("Telescope::Please restart shell.")
+        else
+          print("Telescope::Unable to install fd.")
+        end
+      elseif string.find(os_name, "Linux") then
+        -- Debian based OS support
+        local exitcode = os.execute("sudo apt-get install fd-find -y")
+        if exitcode == 0 then
+          print("Telescope::Please restart shell.")
+        else
+          print("Telescope::Unable to install fd. (Run nvim in sudo -E -s for the initial setup)")
+        end
+      else
+      end
+    end
     -- Enable Telescope extensions if they are installed
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
