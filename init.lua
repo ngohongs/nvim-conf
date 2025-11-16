@@ -159,6 +159,7 @@ require("lazy").setup({
         require "plugins.lsp-config",
         require "plugins.blink",
         require "plugins.diffview",
+        require "plugins.comment",
     },
     checker = { enabled = true },
 })
