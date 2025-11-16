@@ -151,12 +151,12 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = {
     require "colorscheme",
+    require "plugins.which-key",
     require "plugins.gitsigns",
     require "plugins.telescope",
     require "plugins.treesitter",
     require "plugins.neo-tree",
     require "plugins.lsp-config",
-    require "plugins.which-key",
   },
   checker = { enabled = true },
 })
