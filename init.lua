@@ -160,6 +160,7 @@ require("lazy").setup({
         require "plugins.blink",
         require "plugins.diffview",
         require "plugins.comment",
+        require "plugins.noice",
     },
     checker = { enabled = true },
 })
