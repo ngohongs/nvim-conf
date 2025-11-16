@@ -38,6 +38,11 @@ return {
 
 
         -- Show documentation
-        signature = { enabled = true },
+        signature = {
+            enabled = true,
+            window = {
+                show_documentation = true,
+            }
+        },
     },
 }
