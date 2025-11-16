@@ -157,6 +157,7 @@ require("lazy").setup({
         require "plugins.treesitter",
         require "plugins.neo-tree",
         require "plugins.lsp-config",
+        require "plugins.blink",
         require "plugins.diffview",
     },
     checker = { enabled = true },
