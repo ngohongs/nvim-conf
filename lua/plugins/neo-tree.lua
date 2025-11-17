@@ -17,6 +17,8 @@ return {
                 },
             },
         })
+        -- Open git_status at the root
+        vim.keymap.set('n', '<leader>fg', '<Cmd>Neotree git_status toggle<CR>')
         vim.keymap.set('n', '<leader>fs', '<Cmd>Neotree toggle<CR>')
     end,
 }

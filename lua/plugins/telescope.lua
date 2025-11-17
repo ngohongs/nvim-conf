@@ -58,12 +58,20 @@ return { -- Fuzzy Finder (files, lsp, etc)
             --  All the info you're looking for is in `:help telescope.setup()`
             --
             defaults = {
-                -- mappings = {
-                -- i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-                -- },
+                mappings = {
+                    i = {
+                        ['<C-s>'] = 'select_vertical',
+                        ['<C-r>'] = 'select_horizontal',
+                    },
+                },
                 file_ignore_patterns = { '.git/', '.git\\' },
             },
-            -- pickers = {}
+            pickers = {
+                find_files = { theme = 'ivy' },
+                diagnostics = { theme = 'ivy', previewer = false },
+                buffers = { theme = 'ivy' },
+
+            },
             extensions = {
                 ['ui-select'] = {
                     require('telescope.themes').get_dropdown(),
