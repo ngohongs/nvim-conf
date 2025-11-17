@@ -156,6 +156,8 @@ return { -- LSP Configuration & Plugins
                     end,
                 },
             }
+        
+            vim.o.winborder = "rounded"
 
             -- Formatting a buffer
             function FormatPreserveCursor()

@@ -94,6 +94,9 @@ return {
                 enabled = true,
             },
             menu = {
+                border = "rounded",
+                winhighlight =
+                "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
                 auto_show_delay_ms = 500,
                 draw = {
                     components = {
@@ -108,12 +111,21 @@ return {
             documentation = {
                 auto_show = true,
                 auto_show_delay_ms = 500,
+                window = {
+                    border = "rounded",
+                    scrollbar = false,
+                }
             },
 
         },
-        -- Show documentation
+
         signature = {
             enabled = true,
+            window = {
+                scrollbar = false,
+                border = "rounded",
+                show_documentation = true,
+            },
         },
     },
 }
