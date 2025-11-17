@@ -163,6 +163,7 @@ require("lazy").setup({
         require "plugins.noice",
         require "plugins.copilot",
         require "plugins.flash",
+        require "plugins.surround",
     },
     checker = { enabled = true },
 })
