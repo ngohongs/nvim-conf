@@ -105,7 +105,10 @@ return {
                     columns = { { "kind_icon" }, { "label" }, { "kind" } },
                 },
             },
-
+            documentation = {
+                auto_show = true,
+                auto_show_delay_ms = 500,
+            },
 
         },
         -- Show documentation
