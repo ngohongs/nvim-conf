@@ -162,6 +162,7 @@ require("lazy").setup({
         require "plugins.comment",
         require "plugins.noice",
         require "plugins.copilot",
+        require "plugins.flash",
     },
     checker = { enabled = true },
 })
