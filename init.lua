@@ -161,6 +161,7 @@ require("lazy").setup({
         require "plugins.diffview",
         require "plugins.comment",
         require "plugins.noice",
+        require "plugins.copilot",
     },
     checker = { enabled = true },
 })

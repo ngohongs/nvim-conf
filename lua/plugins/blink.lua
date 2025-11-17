@@ -1,7 +1,10 @@
 return {
     'saghen/blink.cmp',
     -- optional: provides snippets for the snippet source
-    dependencies = { 'rafamadriz/friendly-snippets' },
+    dependencies = {
+        'rafamadriz/friendly-snippets',
+        'giuxtaposition/blink-cmp-copilot',
+    },
 
     -- use a release tag to download pre-built binaries
     version = '1.*',
@@ -29,20 +32,85 @@ return {
             preset = 'super-tab',
         },
 
-        appearance = {
-            use_nvim_cmp_as_default = true,
-            -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-            -- Adjusts spacing to ensure icons are aligned
-            nerd_font_variant = 'mono'
+        sources = {
+            default = { "lsp", "path", "snippets", "buffer", "copilot" },
+            providers = {
+                copilot = {
+                    name = "copilot",
+                    module = "blink-cmp-copilot",
+                    score_offset = 100,
+                    async = true,
+                    transform_items = function(ctx, items)
+                        for _, item in ipairs(items) do
+                            item.kind_icon = ''
+                            item.kind_name = 'Copilot'
+                        end
+                        return items
+                    end
+                },
+            },
         },
 
+        appearance = {
+            -- -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+            -- -- Adjusts spacing to ensure icons are aligned
+            nerd_font_variant = 'mono',
+            kind_icons = {
+                Copilot = "",
+                Text = '󰉿',
+                Method = '󰊕',
+                Function = '󰊕',
+                Constructor = '󰒓',
 
+                Field = '󰜢',
+                Variable = '󰆦',
+                Property = '󰖷',
+
+                Class = '󱡠',
+                Interface = '󱡠',
+                Struct = '󱡠',
+                Module = '󰅩',
+
+                Unit = '󰪚',
+                Value = '󰦨',
+                Enum = '󰦨',
+                EnumMember = '󰦨',
+
+                Keyword = '󰻾',
+                Constant = '󰏿',
+
+                Snippet = '󱄽',
+                Color = '󰏘',
+                File = '󰈔',
+                Reference = '󰬲',
+                Folder = '󰉋',
+                Event = '󱐋',
+                Operator = '󰪚',
+                TypeParameter = '󰬛',
+            },
+        },
+        completion = {
+            ghost_text = {
+                enabled = true,
+            },
+            menu = {
+                auto_show_delay_ms = 500,
+                draw = {
+                    components = {
+                        kind = {
+                            text = function(ctx) return "[" .. ctx.kind .. "]" end,
+                            highlight = function(ctx) return ctx.kind_hl end,
+                        },
+                    },
+                    columns = { { "kind_icon" }, { "label" }, { "kind" } },
+                },
+            },
+
+
+        },
         -- Show documentation
         signature = {
             enabled = true,
-            window = {
-                show_documentation = true,
-            }
         },
     },
 }
