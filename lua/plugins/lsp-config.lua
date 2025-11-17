@@ -159,9 +159,27 @@ return { -- LSP Configuration & Plugins
 
             -- Formatting a buffer
             function FormatPreserveCursor()
-                local pos = vim.api.nvim_win_get_cursor(0) -- save cursor position
-                vim.lsp.buf.format({ async = false }) -- format using LSP
-                vim.api.nvim_win_set_cursor(0, pos) -- restore cursor
+                -- Save cursor position
+                local pos = vim.api.nvim_win_get_cursor(0)
+                local row, col = pos[1], pos[2]
+
+                -- Format using LSP (blocking so we restore immediately after)
+                vim.lsp.buf.format({ async = false })
+
+                -- Validate/clamp cursor position
+                local line_count = vim.api.nvim_buf_line_count(0)
+                if row > line_count then
+                    row = line_count
+                end
+
+                local line = vim.api.nvim_buf_get_lines(0, row - 1, row, true)[1] or ""
+                local max_col = #line
+                if col > max_col then
+                    col = max_col
+                end
+
+                -- Restore cursor safely
+                pcall(vim.api.nvim_win_set_cursor, 0, { row, col })
             end
 
             vim.api.nvim_create_user_command("FormatKeepCursor", FormatPreserveCursor, {})
