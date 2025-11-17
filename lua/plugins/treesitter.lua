@@ -20,8 +20,11 @@ return { -- Highlight, edit, and navigate code
             end
         end
 
+        local langs = vim.tbl_keys(require("languages").language_servers)
+        table.insert(langs, "gitcommit")
+
         require("nvim-treesitter.configs").setup({
-            ensure_installed = vim.tbl_keys(require("languages").language_servers),
+            ensure_installed = langs,
             -- Autoinstall languages that are not installed
             auto_install = true,
             highlight = {
