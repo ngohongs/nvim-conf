@@ -164,6 +164,7 @@ require("lazy").setup({
         require "plugins.copilot",
         require "plugins.flash",
         require "plugins.surround",
+        require "plugins.dashboard",
     },
     checker = { enabled = true },
 })
