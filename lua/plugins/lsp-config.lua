@@ -77,16 +77,15 @@ return { -- LSP Configuration & Plugins
                     vim.api.nvim_create_autocmd("LspAttach", {
                         callback = function(ev)
                             local client = vim.lsp.get_client_by_id(ev.data.client_id)
-                            if client.name == "clangd" then
-                                vim.keymap.set(
-                                    "n",
-                                    "<leader>gh",
-                                    function()
-                                        vim.cmd("LspClangdSwitchSourceHeader")
-                                    end,
-                                    { buffer = ev.buf, desc = "[G]oto [H]eader/source" }
-                                )
-                            end
+                            if client.name ~= "clangd" then return end
+
+                            vim.keymap.set("n", "<leader>ch", function()
+                                vim.cmd("LspClangdSwitchSourceHeader")
+                            end, { buffer = ev.buf, desc = "[C] [H]eader/source" })
+
+                            vim.keymap.set("n", "<leader>cv", function()
+                                vim.cmd("vsplit | LspClangdSwitchSourceHeader")
+                            end, { buffer = ev.buf, desc = "[C] [V]split header/source" })
                         end
                     })
 
