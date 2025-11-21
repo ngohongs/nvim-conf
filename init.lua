@@ -165,6 +165,8 @@ require("lazy").setup({
         require "plugins.flash",
         require "plugins.surround",
         require "plugins.dashboard",
+        require "plugins.minianimate",
+        require "plugins.avante",
     },
     checker = { enabled = true },
 })
