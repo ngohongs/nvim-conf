@@ -73,6 +73,23 @@ return { -- LSP Configuration & Plugins
                     --  For example, in C this would take you to the header.
                     map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
+                    -- If clangd is your language server, switch between header/source file
+                    vim.api.nvim_create_autocmd("LspAttach", {
+                        callback = function(ev)
+                            local client = vim.lsp.get_client_by_id(ev.data.client_id)
+                            if client.name == "clangd" then
+                                vim.keymap.set(
+                                    "n",
+                                    "<leader>gh",
+                                    function()
+                                        vim.cmd("LspClangdSwitchSourceHeader")
+                                    end,
+                                    { buffer = ev.buf, desc = "[G]oto [H]eader/source" }
+                                )
+                            end
+                        end
+                    })
+
                     -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
                     ---@param client vim.lsp.Client
                     ---@param method vim.lsp.protocol.Method
@@ -156,7 +173,7 @@ return { -- LSP Configuration & Plugins
                     end,
                 },
             }
-        
+
             vim.o.winborder = "rounded"
 
             -- Formatting a buffer
