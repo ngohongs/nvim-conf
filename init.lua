@@ -109,6 +109,11 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
+-- Resize panes using <leader> + direction
+vim.keymap.set('n', '<leader><C-h>', '<cmd>vertical resize -2<CR>', { desc = 'Shrink width of pane' })
+vim.keymap.set('n', '<leader><C-l>', '<cmd>vertical resize +2<CR>', { desc = 'Expand width of pane' })
+vim.keymap.set('n', '<leader><C-j>', '<cmd>resize -2<CR>', { desc = 'Shrink height of pane' })
+vim.keymap.set('n', '<leader><C-k>', '<cmd>resize +2<CR>', { desc = 'Expand height of pane' })
 --
 --  See `:help wincmd` for a list of all window commands
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
@@ -167,6 +172,8 @@ require("lazy").setup({
         require "plugins.dashboard",
         require "plugins.minianimate",
         require "plugins.avante",
+        require "plugins.lualine",
+        require "plugins.barbar",
     },
     checker = { enabled = true },
 })

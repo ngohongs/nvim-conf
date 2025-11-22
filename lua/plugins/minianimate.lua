@@ -9,6 +9,10 @@ return {
             scroll = {
                 timing = require('mini.animate').gen_timing.linear({ duration = 20, unit = 'total' }),
             },
+
+            resize = {
+                timing = require('mini.animate').gen_timing.linear({ duration = 20, unit = 'total' }),
+            },
         })
     end,
 }
