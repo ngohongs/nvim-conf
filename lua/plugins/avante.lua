@@ -6,6 +6,7 @@ return {
         and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
         or "make",
     event = "VeryLazy",
+    tag = "v0.0.27",
     version = false, -- Never set this value to "*"! Never!
     ---@module 'avante'
     ---@type avante.Config
@@ -22,7 +23,7 @@ return {
         provider = "claude",
         providers = {
             claude = {
-                model = "claude-haiku-3-20240307",
+                model = "claude-sonnet-4-20250514",
             },
         },
         input = {
