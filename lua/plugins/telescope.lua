@@ -132,8 +132,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
         vim.keymap.set('n', '<leader>sf',
             function()
                 require('telescope.builtin').find_files {
-                    hidden = true,
-                    no_ignore = true,
                 }
             end
             , { desc = '[S]earch [F]iles' })

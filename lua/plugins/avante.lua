@@ -23,7 +23,7 @@ return {
         provider = "claude",
         providers = {
             claude = {
-                model = "claude-sonnet-4-20250514",
+                model = "claude-opus-4-5-20251101",
             },
         },
         input = {
@@ -35,6 +35,18 @@ return {
             },
         },
     },
+    config = function(_, opts)
+        local avante = require("avante")
+        avante.setup(opts)
+
+        vim.api.nvim_create_autocmd("QuitPre", {
+            callback = function()
+                if avante.is_sidebar_open() then
+                    avante.close_sidebar()
+                end
+            end,
+        })
+    end,
     dependencies = {
         "nvim-lua/plenary.nvim",
         "MunifTanjim/nui.nvim",
