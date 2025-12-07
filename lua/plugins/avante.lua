@@ -20,7 +20,7 @@ return {
             auto_apply_diff_after_generation = false,
             confirmation_ui_style = "inline_buttons",
         },
-        provider = "claude",
+        provider = "copilot",
         providers = {
             claude = {
                 model = "claude-opus-4-5-20251101",

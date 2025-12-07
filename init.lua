@@ -174,6 +174,7 @@ require("lazy").setup({
         require "plugins.avante",
         require "plugins.lualine",
         require "plugins.barbar",
+        require "plugins.ufo", 
     },
     checker = { enabled = true },
 })
