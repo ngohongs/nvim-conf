@@ -201,7 +201,12 @@ return { -- LSP Configuration & Plugins
             end
 
             vim.api.nvim_create_user_command("FormatKeepCursor", FormatPreserveCursor, {})
-            vim.keymap.set('n', '<leader>ff', FormatPreserveCursor, { desc = 'Format current buffer' })
+            local lsp_format = false
+            if lsp_format then
+                vim.keymap.set('n', '<leader>ff', FormatPreserveCursor, { desc = 'Format current buffer' })
+            else
+                vim.keymap.set('n', '<leader>ff', "gg=G", { desc = 'Format current buffer' })
+            end
 
 
             -- LSP servers and clients are able to communicate to each other what features they support.
