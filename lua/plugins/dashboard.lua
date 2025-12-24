@@ -2,7 +2,7 @@ return {
     'nvimdev/dashboard-nvim',
     event = 'VimEnter',
     dependencies = {
-      { 'juansalvatore/git-dashboard-nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
+        { 'juansalvatore/git-dashboard-nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
     },
     opts = function()
       -- Fallback ASCII header if git-dashboard fails
@@ -23,7 +23,7 @@ return {
 
       -- Check if we're inside a git repository
       local function is_git_repo()
-        local result = vim.fn.system('git rev-parse --is-inside-work-tree 2>/dev/null')
+        local result = vim.fn.system('git rev-parse --is-inside-work-tree')
         return vim.v.shell_error == 0 and result:match('true')
       end
 

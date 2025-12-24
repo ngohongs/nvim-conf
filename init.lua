@@ -171,7 +171,7 @@ require("lazy").setup({
         require "plugins.surround",
         require "plugins.dashboard",
         require "plugins.minianimate",
-        require "plugins.avante",
+        -- require "plugins.avante",
         require "plugins.lualine",
         require "plugins.barbar",
         require "plugins.ufo", 
